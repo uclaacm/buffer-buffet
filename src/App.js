@@ -107,19 +107,14 @@ function Transition() {
 }
 //INTERACTIVE STUFF
 
-function Checkbox(){
-  return(
-    <div className = "CheckBox">
-      <button></button>
-    </div>
-  );
-}
 
 function MenuItem(props){
   return(
     <div className = "MenuItem">
-      <Checkbox></Checkbox>
-      <p>{props.item}</p>
+      <label class="container"> {props.item}
+      <input type="checkbox"/>
+      <span class="checkmark"></span>
+      </label>
     </div>
   );
 }
@@ -133,8 +128,8 @@ function Menu(){
       <MenuItem item = "Pancakes"></MenuItem>
       <MenuItem item = "Grilled Cheese"></MenuItem>
       <MenuItem item = "Caesar Salad"></MenuItem>
+      <button>Submit</button>
     </div>
-    
   );
 }
 
@@ -151,12 +146,15 @@ function Orders(){
   return(
     <div className = "Orders">
       <h3>ORDERS</h3>
-      <OrderItem item1 = "Chicken Wings" item2 = "Chicken Wings"></OrderItem>
-      <OrderItem item1 = "Apple Pie" item2 = "Chicken Wings"></OrderItem>
-      <OrderItem item1 = "Pancakes" item2 = "Chicken Wings"></OrderItem>
-      <OrderItem item1 = "Grilled Cheese" item2 = "Chicken Wings"></OrderItem>
-      <OrderItem item1 = "Caesar Salad" item2 = "Chicken Wings"></OrderItem>
+      
+        <OrderItem item1 = "Chicken Wings" item2 = "Chicken Wings"></OrderItem>
+        <OrderItem item1 = "Apple Pie" item2 = "Chicken Wings"></OrderItem>
+        <OrderItem item1 = "Pancakes" item2 = "Chicken Wings"></OrderItem>
+        <OrderItem item1 = "Grilled Cheese" item2 = "Chicken Wings"></OrderItem>
+        <OrderItem item1 = "Caesar Salad" item2 = "Chicken Wings"></OrderItem>
+      
     </div> 
+
   );
 }
 
