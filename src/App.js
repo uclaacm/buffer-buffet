@@ -11,6 +11,7 @@ import chef from './chef.svg';
     fix spacing it is very ugly oops
     do interactive parts
     implement interactivity
+    add scrollspy
 */}
 //images
 
@@ -38,11 +39,11 @@ function Title() {
   return(
     <div className = "light frame">
         <Heading head1="WELCOME TO" head2="Buffer Buffet" ></Heading>
-        <div className = "flex-container">
-          <div>
+        <div className = 'flex-container'>
+          <div className = 'child'>
             <p>Did you say “table for one”? Thanks for visiting Buffer Buffet! Today, we’ll be serving you a full-course meal on the concept of buffer overflow, courtesy of your favorite code chefs from Teach LA.</p>
           </div>
-          <div>
+          <div className = 'child'>
             <img text-align="center" src={illo} alt="Couldn't Find Image" />
           </div>
         </div>
@@ -119,16 +120,28 @@ function MenuItem(props){
   );
 }
 
+function ReadOrder(){
+ for(let i = 0; i < menu.length; i++){
+    if(menu[i].input.checked) {
+      orders.push(menu[i].item);
+    }
+  }
+}
+
+const menu = [
+  <MenuItem item = "Chicken Wings"></MenuItem>,
+  <MenuItem item = "Apple Pie"></MenuItem>,
+  <MenuItem item = "Pancakes"></MenuItem>,
+  <MenuItem item = "Grilled Cheese"></MenuItem>,
+  <MenuItem item = "Caesar Salad"></MenuItem>,
+];
+
 function Menu(){
   return(
-    <div className = "Menu">
-      <h3>MENU</h3>
-      <MenuItem item = "Chicken Wings"></MenuItem>
-      <MenuItem item = "Apple Pie"></MenuItem>
-      <MenuItem item = "Pancakes"></MenuItem>
-      <MenuItem item = "Grilled Cheese"></MenuItem>
-      <MenuItem item = "Caesar Salad"></MenuItem>
-      <button>Submit</button>
+    <div className = "Menu center">
+      <h3 className = "MenuTitle">MENU</h3>
+        {menu}
+      <button onClick = {ReadOrder}>Submit</button>
     </div>
   );
 }
@@ -136,24 +149,46 @@ function Menu(){
 function OrderItem(props){
   return(
     <div className = "OrderItem">
+      <p style = {{fontWeight: 600}}>Order {props.num}</p>
       <p>{props.item1}</p>
       <p>{props.item2}</p>
     </div>
   );
 }
 
-function Orders(){
+const orders = [
+  "Chicken Wings",
+  "Apple Pie",
+  
+  "Pancakes",
+  "Grilled Cheese",
+
+  "Apple Pie",
+  "",
+  "Caesar Salad",
+
+  "Grilled Cheese",
+  "Chicken Wings",
+
+  "Caesar Salad",
+];
+
+
+function Orders(props){
   return(
     <div className = "Orders">
-      <h3>ORDERS</h3>
-      
-        <OrderItem item1 = "Chicken Wings" item2 = "Chicken Wings"></OrderItem>
-        <OrderItem item1 = "Apple Pie" item2 = "Chicken Wings"></OrderItem>
-        <OrderItem item1 = "Pancakes" item2 = "Chicken Wings"></OrderItem>
-        <OrderItem item1 = "Grilled Cheese" item2 = "Chicken Wings"></OrderItem>
-        <OrderItem item1 = "Caesar Salad" item2 = "Chicken Wings"></OrderItem>
-      
-    </div> 
+      <h3 className = "OrderTitle">ORDERS</h3>
+      <div className = "OrderContainer">
+        <div className = "empty">
+          <p className = "question">?</p>
+        </div>
+        <OrderItem num = "1" item1={orders[0]} item2={orders[1]}></OrderItem>
+        <OrderItem num = "2" item1={orders[2]} item2={orders[3]}></OrderItem>
+        <OrderItem num = "3" item1={orders[4]} item2={orders[5]}></OrderItem>
+        <OrderItem num = "4" item1={orders[6]} item2={orders[7]}></OrderItem>
+        <OrderItem num = "5" item1={orders[8]} item2={orders[9]}></OrderItem>
+      </div>
+      </div> 
 
   );
 }
@@ -163,8 +198,11 @@ function Interactive(props) {
   return(
     <div className = "dark frame">
         <Heading2 head1={props.head1} head2={props.head2} ></Heading2>
-        <Menu></Menu>
-        <Orders></Orders>
+        <div className = "interactive">
+          <Menu></Menu>
+          <Orders arr={props.arr}></Orders>
+        </div>
+        
     </div>
   );
 }
@@ -186,7 +224,7 @@ function App() {
       <Title/>
       <Introduction/> 
       <Transition/>
-      <Interactive head1 = 'Make some orders' head2 = "PICK 2 THINGS OFF THE MENU"></Interactive>
+      <Interactive head1 = 'Make some orders' head2 = "PICK 2 THINGS OFF THE MENU" arr = {orders}></Interactive>
       <SmallTransition heading = "Now let's cause a buffer overflow..." text = ""></SmallTransition>
       <Interactive head1 = 'Make a long order' head2 = "PICK 3 OR MORE THINGS OFF THE MENU"></Interactive>
       <SmallTransition heading = "That's Buffer Overflow!" text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet tellus cras adipiscing enim eu. Lacinia quis vel eros donec ac odio tempor orci dapibus. Now try it with code!"></SmallTransition>

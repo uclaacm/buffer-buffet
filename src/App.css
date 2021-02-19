@@ -55,38 +55,123 @@ h1 {
   color: #E1FEF7;
 }
 
-/*img {
- display: block;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 2em;
-  padding-right: 2em; 
-}*/
+img {
+ size: 1fr;
+}
 
-flex-container {
-  display: flex;
+.flex-container {
+  display: inline-flex;
   flex-wrap: wrap;
 }
 
-menu{
-  background-color: #E1FEF7;
-  height: auto;
-  width: auto;
+.MenuItem {
+  background-color: white;
+  padding: 15px;
+  color: black;
+  margin: 7px;
+  border-radius: 15px;
 }
 
-menuitem{
-  background-color: white;
-  height: auto;
-  width: auto;
+.Menu{
+  background-color: #E1FEF7;
+  padding-top: 1px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 15px;
 }
+
+.MenuTitle{
+  color: #034031;
+  font-size: 40px;
+  text-align: center;
+}
+
+.OrderTitle{
+  color: #E1FEF7;
+  font-size: 40px;
+  text-align: center;
+}
+
+
+button{
+  background-color:#D4EAC3;
+  color:#034031;
+  font-family: "DM Sans";
+  font-size: 24px;
+  font-weight: 500; 
+  width: 55%;
+  padding: 1vh;
+  border-radius: 15px;
+  border: 2px solid #034031;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin:0 auto;
+  margin-top: 30px;
+  display:block;
+}
+
+.interactive{
+  display: grid;
+  grid-template-columns: 45% auto;
+  grid-column-gap: 10%;
+  
+}
+
+.OrderItem{
+  background-color: #F3D5FE;
+  color:black;
+  font-family: "DM Mono";
+  font-size: 14px;
+  width:100px;
+  height: 150px;
+  text-align: center;
+  padding:10px;
+  margin: 10px;
+}
+
+.empty{
+  background-color: none;
+  border:2px solid #F3D5FE;
+  width:100px;
+  height: 150px;
+  padding:8px;
+  margin: 10px;
+  text-align: center;
+}
+
+.question{
+  font-size: 60px;
+  color: #F3D5FE;
+  margin-top:30px;
+}
+
+.OrderContainer{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*checkbox*/
 .container {
   display: block;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
+  padding-left: 50px;
   cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
@@ -111,17 +196,17 @@ menuitem{
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #eee;
+  border: 2px solid #BAE7DC;
 }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: #ccc;
+  background-color: #BAE7DC;
 }
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: #BAE7DC;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -134,6 +219,7 @@ menuitem{
 /* Show the checkmark when checked */
 .container input:checked ~ .checkmark:after {
   display: block;
+  
 }
 
 /* Style the checkmark/indicator */
