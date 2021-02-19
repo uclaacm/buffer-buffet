@@ -37,17 +37,13 @@ function Heading2(props) {
 //frames
 function Title() {
   return(
-    <div className = "light frame">
+    <div className = "light frame titleContainer">
+      <div>
         <Heading head1="WELCOME TO" head2="Buffer Buffet" ></Heading>
-        <div className = 'flex-container'>
-          <div className = 'child'>
-            <p>Did you say “table for one”? Thanks for visiting Buffer Buffet! Today, we’ll be serving you a full-course meal on the concept of buffer overflow, courtesy of your favorite code chefs from Teach LA.</p>
-          </div>
-          <div className = 'child'>
-            <img text-align="center" src={illo} alt="Couldn't Find Image" />
-          </div>
-        </div>
+        <p>Did you say “table for one”? Thanks for visiting Buffer Buffet! Today, we’ll be serving you a full-course meal on the concept of buffer overflow, courtesy of your favorite code chefs from Teach LA.</p>
       </div>
+      <img id = "illo" src={illo} alt="Couldn't Find Image" />
+    </div>
   );
 }
 
@@ -73,7 +69,7 @@ function Introduction() {
       enter their password.
     </p>
 
-    <div> <img text-align="center" src={p1} alt="Couldn't Find Image" /> </div>
+    <div> <img className = "password" src={p1} alt="Couldn't Find Image" /> </div>
 
     <h4 className = "lightBlue">How do buffers overflow?</h4>
     <p>
@@ -84,7 +80,7 @@ function Introduction() {
 
     <br/>
 
-    <img src={p2} alt="Couldn't Find Image"/>
+    <img className = "password" src={p2} alt="Couldn't Find Image"/>
 
     <br/>
 
@@ -101,8 +97,11 @@ function Transition() {
   return(
     <div className = "light frame">
         <Heading head1="AN ANALOGY" head2="Buffer Overflow in the Kitchen" ></Heading>
-        <p>To better illustrate the concept of buffer overflow, let’s cook up an analogy. Say you’re eating at a restaurant - what usually happens is that a waiter comes over, takes your order, writes it down on a notepad, then hands over these orders to the chef.</p>
-        <img text-align="center" src={chef} alt="Couldn't Find Image" />
+        <div className = "transitionContainer">
+          <img id = "chef" src={chef} alt="Couldn't Find Image" />
+          <p id="chefText" >To better illustrate the concept of buffer overflow, let’s cook up an analogy. Say you’re eating at a restaurant - what usually happens is that a waiter comes over, takes your order, writes it down on a notepad, then hands over these orders to the chef.</p>
+        </div>
+        
       </div>
   );
 }

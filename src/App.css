@@ -7,6 +7,7 @@
 
 .frame{
   padding: 15%;
+  overflow:hidden;
 }
 
 .light {
@@ -19,33 +20,33 @@
 }
 
 body {
-    font-family: "DM Sans";
-    font-size: 22px; 
+  font-family: "DM Sans";
+   font-size: 22px; 
 }
 
 h1 {
-    line-height: 100%;
-    font-size: 60px;
-    font-weight: bold;
+  line-height: 100%;
+  font-size: 60px;
+  font-weight: bold;
   }
 
- h3 {
-    font-size: 30px;
-    line-height: 100%;
-    font-weight: bold;
-  }
+h3 {
+  font-size: 30px;
+  line-height: 100%;
+  font-weight: bold;
+}
   
-  h4 {
-    font-family: "DM Mono";
-    font-size: 24px;
-    font-weight: 500;
-    font-style: italic;
-    line-height: 100%;
-  }
+h4 {
+  font-family: "DM Mono";
+  font-size: 24px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 100%;
+}
   
-  p {
-    font-family: "DM Mono";
-  }
+p {
+  font-family: "DM Mono";
+}
 
 .darkGreen{
   color: #034031;
@@ -55,14 +56,14 @@ h1 {
   color: #E1FEF7;
 }
 
-img {
- size: 1fr;
-}
 
-.flex-container {
-  display: inline-flex;
-  flex-wrap: wrap;
-}
+
+
+
+
+
+
+
 
 .MenuItem {
   background-color: white;
@@ -115,6 +116,44 @@ button{
   grid-template-columns: 45% auto;
   grid-column-gap: 10%;
   
+}
+
+/*Images*/
+#illo{
+  width: 540px;
+  object-fit: contain;
+  vertical-align: top;
+  margin-top: -37%;
+}
+
+.password{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.titleContainer{
+  display: grid;
+  grid-template-columns: 50% auto;
+  grid-column-gap: 10%;
+  align-content: center;
+}
+
+.transitionContainer{
+  position: relative;
+}
+
+#chef{
+  width: 100vw;
+  margin-left: -18%;
+  margin-bottom: -22.7%;
+  z-index: -1;
+  object-fit: contain;
+}
+
+#chefText{
+  width: 43%;
+  margin-top: -37%;
 }
 
 .OrderItem{
