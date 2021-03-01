@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import illo from './illo.svg';
 import p1 from './p1 (1).svg';
@@ -107,44 +107,6 @@ function Transition() {
 }
 //INTERACTIVE STUFF
 
-
-function MenuItem(props){
-  return(
-    <div className = "MenuItem">
-      <label class="container"> {props.item}
-      <input type="checkbox"/>
-      <span class="checkmark"></span>
-      </label>
-    </div>
-  );
-}
-
-function ReadOrder(){
- for(let i = 0; i < menu.length; i++){
-    if(menu[i].input.checked) {
-      orders.push(menu[i].item);
-    }
-  }
-}
-
-const menu = [
-  <MenuItem item = "Chicken Wings"></MenuItem>,
-  <MenuItem item = "Apple Pie"></MenuItem>,
-  <MenuItem item = "Pancakes"></MenuItem>,
-  <MenuItem item = "Grilled Cheese"></MenuItem>,
-  <MenuItem item = "Caesar Salad"></MenuItem>,
-];
-
-function Menu(){
-  return(
-    <div className = "Menu center">
-      <h3 className = "MenuTitle">MENU</h3>
-        {menu}
-      <button onClick = {ReadOrder}>Submit</button>
-    </div>
-  );
-}
-
 function OrderItem(props){
   return(
     <div className = "OrderItem">
@@ -187,21 +149,6 @@ function Orders(props){
         <OrderItem num = "4" item1={orders[6]} item2={orders[7]}></OrderItem>
         <OrderItem num = "5" item1={orders[8]} item2={orders[9]}></OrderItem>
       </div>
-      </div> 
-
-  );
-}
-
-
-function Interactive(props) {
-  return(
-    <div className = "dark frame">
-        <Heading2 head1={props.head1} head2={props.head2} ></Heading2>
-        <div className = "interactive">
-          <Menu></Menu>
-          <Orders arr={props.arr}></Orders>
-        </div>
-        
     </div>
   );
 }
@@ -218,6 +165,76 @@ function SmallTransition(props) {
 }
 
 function App() {
+  const menu = [
+    "Chicken Wings",
+    "Apple Pie",
+    "Pancakes",
+    "Grilled Cheese",
+    "Caesar Salad",
+  ];
+
+  const [menuChecked, setMenuChecked] = useState([false, false, false, false, false]);
+
+  function MenuItem(props){
+    return(
+      <div className="MenuItem">
+        <label class="container"> {props.item}
+        <input
+          type="checkbox"
+          checked={menuChecked[props.index]}                    // use appropriate value from "menuChecked" array
+          onChange={e => {
+            const newMenuChecked = [...menuChecked];            // make a copy of "menuChecked"
+            newMenuChecked[props.index] = e.target.checked;     // change the target element
+            setMenuChecked(newMenuChecked);                     // update the state with the new array
+          }}
+        />
+        <span class="checkmark"></span>
+        </label>
+      </div>
+    );
+  }
+
+  function ReadOrder(){
+  for(let i = 0; i < menu.length; i++){
+      if (menuChecked[i]) {                // we should check our "menuChecked" state instead of trying to access the page elements
+        orders.push(menu[i]);
+          // at this point, this line doesn't do anything because
+          // the "orders" array is just a normal variable, not a state.
+          // react will only re-render or update the screen when there is a state change.
+          // we will fix this in the next commit by making "orders" a state, and
+          // using this state to render OrderItems (which are currently hardcoded)
+      }
+    }
+  }
+
+  // used "map" to systematically create one MenuItem for each item in the "menu" array
+  // note: this lets us include an index for each item without hard-coding it
+  const menuItems = menu.map((item, i) => {
+    return <MenuItem key={item} item={item} index={i} />;
+  });
+
+  function Menu(){
+    return(
+      <div className = "Menu center">
+        <h3 className = "MenuTitle">MENU</h3>
+          {menuItems}
+        <button onClick = {ReadOrder}>Submit</button>
+      </div>
+    );
+  }
+
+  function Interactive(props) {
+    return(
+      <div className = "dark frame">
+          <Heading2 head1={props.head1} head2={props.head2} ></Heading2>
+          <div className = "interactive">
+            <Menu></Menu>
+            <Orders arr={props.arr}></Orders>
+          </div>
+      </div>
+    );
+  }
+  
   return (
     <div className="App">
       <Title/>
