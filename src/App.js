@@ -105,55 +105,6 @@ function Transition() {
       </div>
   );
 }
-//INTERACTIVE STUFF
-
-function OrderItem(props){
-  return(
-    <div className = "OrderItem">
-      <p style = {{fontWeight: 600}}>Order {props.num}</p>
-      <p>{props.item1}</p>
-      <p>{props.item2}</p>
-    </div>
-  );
-}
-
-const orders = [
-  "Chicken Wings",
-  "Apple Pie",
-  
-  "Pancakes",
-  "Grilled Cheese",
-
-  "Apple Pie",
-  "",
-  "Caesar Salad",
-
-  "Grilled Cheese",
-  "Chicken Wings",
-
-  "Caesar Salad",
-];
-
-
-function Orders(props){
-  return(
-    <div className = "Orders">
-      <h3 className = "OrderTitle">ORDERS</h3>
-      <div className = "OrderContainer">
-        <div className = "empty">
-          <p className = "question">?</p>
-        </div>
-        <OrderItem num = "1" item1={orders[0]} item2={orders[1]}></OrderItem>
-        <OrderItem num = "2" item1={orders[2]} item2={orders[3]}></OrderItem>
-        <OrderItem num = "3" item1={orders[4]} item2={orders[5]}></OrderItem>
-        <OrderItem num = "4" item1={orders[6]} item2={orders[7]}></OrderItem>
-        <OrderItem num = "5" item1={orders[8]} item2={orders[9]}></OrderItem>
-      </div>
-    </div>
-  );
-}
-
-//END OF INTERACTIVE STUFF
 
 function SmallTransition(props) {
   return(
@@ -165,6 +116,43 @@ function SmallTransition(props) {
 }
 
 function App() {
+
+  const [orders, setOrders] = useState([   // made orders into a state variable
+    ["Chicken Wings", "Apple Pie"],
+    ["Pancakes", "Grilled Cheese"],
+    ["Apple Pie", ""],
+    ["Caesar Salad", "Grilled Cheese"],
+    ["Chicken Wings", "Caesar Salad"],
+  ]);
+
+  function OrderItem(props){
+    return(
+      <div className = "OrderItem">
+        <p style = {{fontWeight: 600}}>Order {props.num}</p>
+        <p>{props.items[0]}</p>
+        <p>{props.items[1]}</p>
+      </div>
+    );
+  }
+  
+  function Orders(props){
+    return(
+      <div className = "Orders">
+        <h3 className = "OrderTitle">ORDERS</h3>
+        <div className = "OrderContainer">
+          <div className = "empty">
+            <p className = "question">?</p>
+          </div>
+          {
+            orders.map((order, i) => { // like the menuItems, we should use "map" to systematically create the React components
+              return <OrderItem key={i} num={String(i + 1)} items={order} />;
+            })
+          }
+        </div>
+      </div>
+    );
+  }
+
   const menu = [
     "Chicken Wings",
     "Apple Pie",
@@ -194,17 +182,23 @@ function App() {
     );
   }
 
-  function ReadOrder(){
-  for(let i = 0; i < menu.length; i++){
+  function ReadOrder() {
+    const newOrders = [...orders];         // make a copy of orders to manipulate
+    let checkedItems = [];
+    for(let i = 0; i < menu.length; i++){
       if (menuChecked[i]) {                // we should check our "menuChecked" state instead of trying to access the page elements
-        orders.push(menu[i]);
-          // at this point, this line doesn't do anything because
-          // the "orders" array is just a normal variable, not a state.
-          // react will only re-render or update the screen when there is a state change.
-          // we will fix this in the next commit by making "orders" a state, and
-          // using this state to render OrderItems (which are currently hardcoded)
+        checkedItems.push(menu[i]);
+        if (checkedItems.length === 2) {
+          newOrders.push(checkedItems);
+          checkedItems = [];
+        }
       }
     }
+    if (checkedItems.length === 1) {
+      checkedItems.push("");
+      newOrders.push(checkedItems);
+    }
+    setOrders(newOrders);                 // update the orders once we're done processing
   }
 
   // used "map" to systematically create one MenuItem for each item in the "menu" array
