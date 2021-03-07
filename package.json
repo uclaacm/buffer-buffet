@@ -20,7 +20,7 @@
     "lint-js": "eslint \"**/*.js\"",
     "lint-js-fix": "eslint --fix \"**/*.js\""
   },
-  "eslintIgnore": ["eslintrc.js"],
+  "ignorePatterns": ["eslintrc.js", "App.test.js"],
   "eslintConfig": {
     "extends": "react-app"
   },
