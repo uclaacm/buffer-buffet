@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import "./App.css";
-import illo from "./illo.svg";
-import p1 from "./p1 (1).svg";
-import p2 from "./p2 (1).svg";
-import chef from "./chef.svg";
+import React, { useState } from 'react'
+import './App.css'
+import illo from './illo.svg'
+import p1 from './p1 (1).svg'
+import p2 from './p2 (1).svg'
+import chef from './chef.svg'
 
+// images
 
-//images
-
-// functions
+//  functions
 function Heading (props) {
   return (
     <div>
@@ -27,10 +26,10 @@ function Heading2 (props) {
   )
 }
 
-//frames
-function Title() {
+// frames
+function Title () {
   return (
-    <div className="light frame titleContainer">
+    <div className='light frame titleContainer'>
       <div>
         <Heading head1="WELCOME TO" head2="Buffer Buffet"></Heading>
         <p>
@@ -41,10 +40,10 @@ function Title() {
       </div>
       <img id="illo" src={illo} alt="Illustration of Chef" />
     </div>
-  );
+  )
 }
 
-function Introduction() {
+function Introduction () {
   return (
     <div className="dark frame">
       <Heading head1="INTRODUCTION" head2="What is Buffer Overflow?"></Heading>
@@ -58,7 +57,7 @@ function Introduction() {
 
       <h4 className="lightBlue"> Ok, so what’s a buffer?</h4>
       <p>
-        <span style={{ textDecorationLine: "underline" }}>Buffers</span> are
+        <span style={{ textDecorationLine: 'underline' }}>Buffers</span> are
         areas of memory set aside to hold data temporaily as it is being
         transferred from one region to another. It can hold anything from
         character strings to arrays of integers. As is in memory systems or
@@ -70,15 +69,15 @@ function Introduction() {
       </p>
 
       <div>
-        {" "}
-        <img className="password" src={p1} alt="Buffer Example Password" />{" "}
+        {' '}
+        <img className="password" src={p1} alt="Buffer Example Password" />{' '}
       </div>
 
       <h4 className="lightBlue">How do buffers overflow?</h4>
       <p>
-        <span style={{ textDecorationLine: "underline" }}>Buffer overflow</span>{" "}
+        <span style={{ textDecorationLine: 'underline' }}>Buffer overflow</span>{' '}
         happens when a program attempts to input more data in a buffer than it
-        can hold. As a result, the program ends up going past the buffer's
+        can hold. As a result, the program ends up going past the buffer&#39;s
         boundary and overwrites adjacent memory locations.
       </p>
 
@@ -97,8 +96,7 @@ function Introduction() {
   )
 }
 
-
-function Transition() {
+function Transition () {
   return (
     <div className="light frame">
       <Heading
@@ -118,7 +116,7 @@ function Transition() {
   )
 }
 
-function SmallTransition(props) {
+function SmallTransition (props) {
   return (
     <div className="light frame">
       <h1>{props.heading}</h1>
@@ -127,29 +125,28 @@ function SmallTransition(props) {
   )
 }
 
-//INTERACTIVE FRAME
-function Interactive(props) {
-
+// INTERACTIVE FRAME
+function Interactive (props) {
   const [orders, setOrders] = useState([
-    // made orders into a state variable
-    ["Chicken Wings", "Apple Pie"],
-    ["Pancakes", "Grilled Cheese"],
-    ["Apple Pie", ""],
-    ["Caesar Salad", "Grilled Cheese"],
-    ["Chicken Wings", "Caesar Salad"],
-  ]);
+    //  made orders into a state variable
+    ['Chicken Wings', 'Apple Pie'],
+    ['Pancakes', 'Grilled Cheese'],
+    ['Apple Pie', ''],
+    ['Caesar Salad', 'Grilled Cheese'],
+    ['Chicken Wings', 'Caesar Salad']
+  ])
 
-  function OrderItem(props) {
+  function OrderItem (props) {
     return (
-      <div className="OrderItem" style = {{backgroundColor: props.color}}>
+      <div className="OrderItem" style = {{ backgroundColor: props.color }}>
         <p style={{ fontWeight: 600 }}>Order {props.num}</p>
         <p>{props.items[0]}</p>
         <p>{props.items[1]}</p>
       </div>
-    );
+    )
   }
 
-  function Orders() {
+  function Orders () {
     return (
       <div className="Orders">
         <h3 className="OrderTitle">ORDERS</h3>
@@ -158,127 +155,120 @@ function Interactive(props) {
             <p className="question">?</p>
           </div>
           {(orders.slice(0, 5)).map((order, i) => {
-            // like the menuItems, we should use "map" to systematically create the React components
-            let color = "#F3D5FE";
-            if(orders.length - i < 6) color = "#E1FEF7";
-            return <OrderItem key={i} num={String(orders.length - i)} items={order} color = {color}/>;
+            //  like the menuItems, we should use "map" to systematically create the React components
+            let color = '#F3D5FE'
+            if (orders.length - i < 6) color = '#E1FEF7'
+            return <OrderItem key={i} num={String(orders.length - i)} items={order} color = {color}/>
           })}
         </div>
       </div>
-    );
+    )
   }
 
   const menu = [
-    "Chicken Wings",
-    "Apple Pie",
-    "Pancakes",
-    "Grilled Cheese",
-    "Caesar Salad",
-  ];
+    'Chicken Wings',
+    'Apple Pie',
+    'Pancakes',
+    'Grilled Cheese',
+    'Caesar Salad'
+  ]
 
   const [menuChecked, setMenuChecked] = useState([
     false,
     false,
     false,
     false,
-    false,
-  ]);
+    false
+  ])
 
-  const [error, setError] = useState([null]);
+  const [error, setError] = useState([null])
 
-  function MenuItem(props) {
-    
+  function MenuItem (props) {
     return (
       <div className="MenuItem">
         <label className="container">
-          {" "}
+          {' '}
           {props.item}
           <input
             type="checkbox"
-            checked={menuChecked[props.index]} // use appropriate value from "menuChecked" array
+            checked={menuChecked[props.index]} //  use appropriate value from "menuChecked" array
             onChange={(e) => {
-              console.log("checkbox changed");
-              const newMenuChecked = [...menuChecked]; // make a copy of "menuChecked"
-              newMenuChecked[props.index] = e.target.checked; // change the target element
-              setMenuChecked(newMenuChecked); // update the state with the new array
-              console.log(newMenuChecked);
+              console.log('checkbox changed')
+              const newMenuChecked = [...menuChecked] //  make a copy of "menuChecked"
+              newMenuChecked[props.index] = e.target.checked //  change the target element
+              setMenuChecked(newMenuChecked) //  update the state with the new array
+              console.log(newMenuChecked)
 
-              console.log(props.restriction);
-              if(props.restriction){
-                console.log("restricted to two");
-                // show error message if more than two
-              let totalCheck = 0;
-              for (let i = 0; i < newMenuChecked.length; i++) {
+              console.log(props.restriction)
+              if (props.restriction) {
+                console.log('restricted to two')
+                //  show error message if more than two
+                let totalCheck = 0
+                for (let i = 0; i < newMenuChecked.length; i++) {
                   if (newMenuChecked[i]) {
-                      totalCheck++;
+                    totalCheck++
                   }
+                }
+                console.log('total check: ' + totalCheck)
+                if (totalCheck > 2) {
+                  setError('You may only choose two.')
+                } else {
+                  setError(null)
+                }
               }
-              console.log("total check: "+totalCheck);
-              if(totalCheck > 2){
-                setError("You may only choose two.");
-              }
-              else {
-                setError(null);
-              }
-              }              
             }
           }
           />
           <span className="checkmark"></span>
         </label>
       </div>
-    );
+    )
   }
 
-  
-
-  // used "map" to systematically create one MenuItem for each item in the "menu" array
-  // note: this lets us include an index for each item without hard-coding it
+  //  used "map" to systematically create one MenuItem for each item in the "menu" array
+  //  note: this lets us include an index for each item without hard-coding it
   const menuItems = menu.map((item, i) => {
-    return <MenuItem key={item} item={item} index={i} restriction = {props.restriction}/>;
-  });
+    return <MenuItem key={item} item={item} index={i} restriction = {props.restriction}/>
+  })
 
-  function Menu(props) {
+  function Menu (props) {
+    function ReadOrder () {
+      console.log("read order's restriction: " + props.restriction)
+      const newOrders = [...orders] //  make a copy of orders to manipulate
+      let checkedItems = []
 
-    function ReadOrder() {
-      console.log("read order's restriction: " + props.restriction);
-      const newOrders = [...orders]; // make a copy of orders to manipulate
-      let checkedItems = [];
-  
-      //find total checked
-      let totalChecked = 0;
+      // find total checked
+      let totalChecked = 0
       for (let i = 0; i < menu.length; i++) {
         if (menuChecked[i]) {
-          totalChecked++;
+          totalChecked++
         }
       }
-  
-      console.log(props.restriction);
-      //if total checked > restriction, then show an error message
-      if(totalChecked > 2 && props.restriction){
-        console.log("pick only two!");
-      }
-  
-      else{
+
+      console.log(props.restriction)
+      // if total checked > restriction, then show an error message
+      if (totalChecked > 2 && props.restriction) {
+        console.log('pick only two!')
+      } else {
         for (let i = 0; i < menu.length; i++) {
           if (menuChecked[i]) {
-            // we should check our "menuChecked" state instead of trying to access the page elements
-            checkedItems.push(menu[i]);
+            //  we should check our "menuChecked" state instead of trying to access the page elements
+            checkedItems.push(menu[i])
             if (checkedItems.length === 2) {
-              newOrders.unshift(checkedItems);
-              checkedItems = [];
+              newOrders.unshift(checkedItems)
+              checkedItems = []
             }
           }
         }
         if (checkedItems.length === 1) {
-          checkedItems.push("");
-          newOrders.unshift(checkedItems);
+          checkedItems.push('')
+          newOrders.unshift(checkedItems)
         }
-        setOrders(newOrders); // update the orders once we're done processing
+        setOrders(newOrders) //  update the orders once we're done processing
       }
     }
 
-    console.log("menu's restriction: "+props.restriction);
+    console.log("menu's restriction: " + props.restriction)
     return (
       <div className="Menu center">
         <h3 className="MenuTitle">MENU</h3>
@@ -286,7 +276,7 @@ function Interactive(props) {
         <h4 className = "error">{error}</h4>
         <button className = "submitButton" onClick={ReadOrder}>Submit</button>
       </div>
-    );
+    )
   }
 
   return (
@@ -297,12 +287,10 @@ function Interactive(props) {
         <Orders arr={props.arr}></Orders>
       </div>
     </div>
-  );
+  )
 }
 
-
-function App() {
-  
+function App () {
   return (
     <div className="App">
       <Title />
@@ -327,8 +315,7 @@ function App() {
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet tellus cras adipiscing enim eu. Lacinia quis vel eros donec ac odio tempor orci dapibus. Now try it with code!"
       ></SmallTransition>
     </div>
-  );
+  )
 }
 
-export default App;
-
+export default App
