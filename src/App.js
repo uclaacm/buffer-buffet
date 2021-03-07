@@ -8,23 +8,23 @@ import chef from "./chef.svg";
 
 //images
 
-//functions
-function Heading(props) {
+// functions
+function Heading (props) {
   return (
     <div>
       <h3>{props.head1}</h3>
       <h1>{props.head2}</h1>
     </div>
-  );
+  )
 }
 
-function Heading2(props) {
+function Heading2 (props) {
   return (
     <div>
       <h1>{props.head1}</h1>
       <h3>{props.head2}</h3>
     </div>
-  );
+  )
 }
 
 //frames
@@ -92,9 +92,11 @@ function Introduction() {
         Using the example above, the buffer would overflow if a user attempts to
         enter in data that exceeds the 8 bytes alloted.
       </p>
+
     </div>
-  );
+  )
 }
+
 
 function Transition() {
   return (
@@ -113,7 +115,7 @@ function Transition() {
         </p>
       </div>
     </div>
-  );
+  )
 }
 
 function SmallTransition(props) {
@@ -122,7 +124,7 @@ function SmallTransition(props) {
       <h1>{props.heading}</h1>
       <p>{props.text}</p>
     </div>
-  );
+  )
 }
 
 //INTERACTIVE FRAME
@@ -329,3 +331,4 @@ function App() {
 }
 
 export default App;
+
