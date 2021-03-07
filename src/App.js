@@ -12,7 +12,7 @@ function Heading (props) {
   return (
     <div>
       <h3>{props.head1}</h3>
-      <h1>{props.head2}</h1>
+      <h2>{props.head2}</h2>
     </div>
   )
 }
@@ -20,7 +20,7 @@ function Heading (props) {
 function Heading2 (props) {
   return (
     <div>
-      <h1>{props.head1}</h1>
+      <h2>{props.head1}</h2>
       <h3>{props.head2}</h3>
     </div>
   )
@@ -119,7 +119,7 @@ function Transition () {
 function SmallTransition (props) {
   return (
     <div className="light frame">
-      <h1>{props.heading}</h1>
+      <h2>{props.heading}</h2>
       <p>{props.text}</p>
     </div>
   )
