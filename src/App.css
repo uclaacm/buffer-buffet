@@ -7,6 +7,7 @@
 
 .frame {
   padding: 15%;
+  overflow: hidden;
 }
 
 .light {
@@ -56,38 +57,142 @@ p {
   color: #e1fef7;
 }
 
-/* img {
- display: block;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 2em;
-  padding-right: 2em;
-} */
-
-/* flex-container {
-  display: flex;
-  flex-wrap: wrap;
-} */
-
-menu {
-  background-color: #e1fef7;
-  height: auto;
-  width: auto;
+.MenuItem {
+  background-color: white;
+  padding: 15px;
+  color: black;
+  margin: 7px;
+  border-radius: 15px;
 }
 
-menuitem {
-  background-color: white;
-  height: auto;
-  width: auto;
+.Menu {
+  background-color: #e1fef7;
+  padding-top: 1px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 15px;
+}
+
+.MenuTitle {
+  color: #034031;
+  font-size: 40px;
+  text-align: center;
+}
+
+.OrderTitle {
+  color: #e1fef7;
+  font-size: 40px;
+  text-align: center;
+}
+
+.submitButton {
+  background-color: #d4eac3;
+  color: #034031;
+  font-family: "DM Sans", -apple-system, "Helvetica Neue", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  width: 55%;
+  padding: 1vh;
+  border-radius: 15px;
+  border: 2px solid #034031;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  margin: 0 auto;
+  margin-top: 30px;
+  display: block;
+}
+
+.interactive {
+  display: grid;
+  grid-template-columns: 45% auto;
+  grid-column-gap: 10%;
+}
+
+.error {
+  color: rgb(204, 5, 5);
+  font-family: "DM Sans", -apple-system, "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  margin: 15px 10px -15px 10px;
+  text-align: center;
+}
+
+/* Images */
+#illo {
+  width: 540px;
+  object-fit: contain;
+  vertical-align: top;
+  margin-top: -37%;
+}
+
+.password {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.titleContainer {
+  display: grid;
+  grid-template-columns: 50% auto;
+  grid-column-gap: 10%;
+  align-content: center;
+}
+
+.transitionContainer {
+  position: relative;
+}
+
+#chef {
+  width: 100vw;
+  margin-left: -18%;
+  margin-bottom: -22.7%;
+  z-index: -1;
+  object-fit: contain;
+}
+
+#chefText {
+  width: 43%;
+  margin-top: -37%;
+}
+
+.OrderItem {
+  background-color: #f3d5fe;
+  color: black;
+  font-family: "DM Mono", -apple-system, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  width: 100px;
+  height: 150px;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+.empty {
+  background-color: none;
+  border: 2px solid #f3d5fe;
+  width: 100px;
+  height: 150px;
+  padding: 8px;
+  margin: 10px;
+  text-align: center;
+}
+
+.question {
+  font-size: 60px;
+  color: #f3d5fe;
+  margin-top: 30px;
+}
+
+.OrderContainer {
+  display: grid;
+  grid-template-columns: auto auto auto;
 }
 
 /* checkbox */
+
 .container {
   display: block;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
+  padding-left: 50px;
   cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
@@ -112,17 +217,17 @@ menuitem {
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #eee;
+  border: 2px solid #bae7dc;
 }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: #ccc;
+  background-color: #bae7dc;
 }
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #2196f3;
+  background-color: #bae7dc;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */

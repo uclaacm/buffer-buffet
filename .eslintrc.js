@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
+    'plugin:jest/recommended',
     'standard'
   ],
   parserOptions: {
@@ -19,6 +20,6 @@ module.exports = {
     'react'
   ],
   rules: {
-    "react/prop-types": "off",
-  },
+    'react/prop-types': 'off'
+  }
 }
