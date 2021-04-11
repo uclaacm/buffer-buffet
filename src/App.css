@@ -6,8 +6,44 @@
 }
 
 .frame {
-  padding: 15%;
+  padding: 8%;
   overflow: hidden;
+  /* height: 34.3vh; */
+  height: 65vh;
+}
+
+.long {
+  height: fit-content;
+}
+
+.nextBtn {
+  background-color: #D3EDE7;
+  color: #034031;
+  font-family: "DM Sans", -apple-system, "Helvetica Neue", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  /* width: 40%; */
+  padding: 4px 30px;
+  border-radius: 15px;
+  border: none;
+  margin: 0 auto;
+  margin-top: 10px;
+  /* display: block; */
+}
+
+.greenBtn{
+  display: block;
+  background-color: #007054;
+  color:#e1fef7;
+  font-weight: lighter;
+}
+
+.squish{
+  margin-bottom: -40px;
+}
+
+.squish2{
+  margin-bottom: 30px;
 }
 
 .light {
@@ -22,27 +58,47 @@
 
 body {
   font-family: "DM Sans", -apple-system, "Helvetica Neue", sans-serif;
-  font-size: 22px;
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 64px;
+  color: #034031;
+  margin-bottom: 6px;
 }
 
 h2 {
-  line-height: 100%;
-  font-size: 60px;
+  font-size: 53px;
   font-weight: bold;
 }
 
 h3 {
-  font-size: 30px;
-  line-height: 100%;
+  font-size: 28px;
   font-weight: bold;
 }
 
 h4 {
-  font-family: "DM Mono", -apple-system, "Helvetica Neue", sans-serif;
-  font-size: 24px;
+  /* font-family: "DM Mono", -apple-system, "Helvetica Neue", sans-serif; */
+  color: white;
+  font-size: 28px;
   font-weight: 500;
-  font-style: italic;
-  line-height: 100%;
+  /* font-style: italic; */
+  /* line-height: 100%; */
+  text-align: center;
+}
+
+hr{
+  margin-top: -5px;
+  height: 1px;
+  border-width:0;
+  color:white;
+  background-color:white;
+}
+
+.dropdown{
+  color: #FFCFA3;
+  font-size: 25px;
+
 }
 
 p {
@@ -118,10 +174,15 @@ p {
 
 /* Images */
 #illo {
-  width: 540px;
+  /* width: 540px;
   object-fit: contain;
   vertical-align: top;
-  margin-top: -37%;
+  margin-top: -37%; */
+  height: 90vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* padding: 8%; */
 }
 
 .password {
@@ -132,9 +193,13 @@ p {
 
 .titleContainer {
   display: grid;
-  grid-template-columns: 50% auto;
-  grid-column-gap: 10%;
+  grid-template-columns: 55% auto;
+  /* grid-column-gap: 10%; */
   align-content: center;
+}
+
+.lightText{
+  color: #e1fef7;
 }
 
 .transitionContainer {
@@ -143,10 +208,10 @@ p {
 
 #chef {
   width: 100vw;
-  margin-left: -18%;
+  /* margin-left: -18%;
   margin-bottom: -22.7%;
   z-index: -1;
-  object-fit: contain;
+  object-fit: contain; */
 }
 
 #chefText {

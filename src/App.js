@@ -1,42 +1,44 @@
-import React, { useState } from 'react'
+/* eslint-disable */ 
+import React ,{ useState } from 'react'
 import './App.css'
 import illo from './illo.svg'
 import p1 from './p1 (1).svg'
 import p2 from './p2 (1).svg'
-import chef from './chef.svg'
+import chef from './chef(1).svg'
 
-// images
+//to do: style buttons, dropdown
 
-//  functions
+// functions
 function Heading (props) {
   return (
     <div>
-      <h3>{props.head1}</h3>
-      <h2>{props.head2}</h2>
+      <h3 className = "squish">{props.head1}</h3>
+      <h2 className = "squish2">{props.head2}</h2>
     </div>
   )
 }
 
-function Heading2 (props) {
-  return (
-    <div>
-      <h2>{props.head1}</h2>
-      <h3>{props.head2}</h3>
-    </div>
-  )
-}
+// function Heading2 (props) {
+//   return (
+//     <div>
+//       <h2>{props.head1}</h2>
+//       <h3>{props.head2}</h3>
+//     </div>
+//   )
+// }
 
 // frames
 function Title () {
   return (
     <div className='light frame titleContainer'>
       <div>
-        <Heading head1="WELCOME TO" head2="Buffer Buffet"></Heading>
+        <h1>Buffer Buffet</h1>
         <p>
           Did you say “table for one”? Thanks for visiting Buffer Buffet! Today,
           we’ll be serving you a full-course meal on the concept of buffer
           overflow, courtesy of your favorite code chefs from Teach LA.
         </p>
+        <button className = "nextBtn">Let's get cooking!</button>
       </div>
       <img id="illo" src={illo} alt="Illustration of Chef" />
     </div>
@@ -45,36 +47,43 @@ function Title () {
 
 function Introduction () {
   return (
-    <div className="dark frame">
-      <Heading head1="INTRODUCTION" head2="What is Buffer Overflow?"></Heading>
-
-      <p>
+    <div className="dark frame long">
+      {/* <Heading head1="INTRODUCTION" head2="What is Buffer Overflow?"></Heading> */}
+      <div class = "heading">
+        <h3 className = "squish">INTRODUCTION</h3>
+        <h2 className = "lightBlue">What is buffer overflow?</h2>
+      </div>
+      
+      <p style={{ fontWeight: 'lighter' }}>
         To satisfy your hunger for knowledge, we’ll start with a quick intro of
         what buffer overflow is.
       </p>
 
-      <br />
+      {/* <br /> */}
 
-      <h4 className="lightBlue"> Ok, so what’s a buffer?</h4>
-      <p>
+      <h4> Ok, so what’s a buffer? <span className = "dropdown">&#9660;</span> </h4> 
+      <hr/>
+
+      <p style={{ fontWeight: 'lighter' }}>
         <span style={{ textDecorationLine: 'underline' }}>Buffers</span> are
-        areas of memory set aside to hold data temporaily as it is being
+        areas of memory set aside to hold data temporarily as it is being
         transferred from one region to another. It can hold anything from
         character strings to arrays of integers. As is in memory systems or
         programs, the sizes of these buffers are typically well-defined.
       </p>
-      <p>
+      <p style={{ fontWeight: 'lighter' }}>
         For example, a program could contain a 8-byte buffer for a user to enter
         their password.
       </p>
-
+      <br/>
       <div>
         {' '}
         <img className="password" src={p1} alt="Buffer Example Password" />{' '}
       </div>
 
-      <h4 className="lightBlue">How do buffers overflow?</h4>
-      <p>
+      <h4 className="lightBlue">How do buffers overflow? <span className = "dropdown">&#9660;</span></h4>
+      <hr/>
+      <p style={{ fontWeight: 'lighter' }}>
         <span style={{ textDecorationLine: 'underline' }}>Buffer overflow</span>{' '}
         happens when a program attempts to input more data in a buffer than it
         can hold. As a result, the program ends up going past the buffer&#39;s
@@ -87,10 +96,12 @@ function Introduction () {
 
       <br />
 
-      <p>
+      <p style={{ fontWeight: 'lighter' }}>
         Using the example above, the buffer would overflow if a user attempts to
         enter in data that exceeds the 8 bytes alloted.
       </p>
+      <br />
+      <button className = "nextBtn greenBtn">Continue</button>
 
     </div>
   )
@@ -99,10 +110,14 @@ function Introduction () {
 function Transition () {
   return (
     <div className="light frame">
-      <Heading
+      {/* <Heading
         head1="AN ANALOGY"
         head2="Buffer Overflow in the Kitchen"
-      ></Heading>
+      ></Heading> */}
+       <div class = "heading">
+        <h3 className = "squish">AN ANALOGY</h3>
+        <h2 className = "darkGreen">Buffer Overflow in the Kitchen</h2>
+      </div>
       <div className="transitionContainer">
         <img id="chef" src={chef} alt="Illustration of Chef" />
         <p id="chefText">
@@ -295,8 +310,8 @@ function App () {
     <div className="App">
       <Title />
       <Introduction />
-      <Transition />
-      <Interactive
+       <Transition />
+      {/*<Interactive
         head1="Make some orders"
         head2="PICK 2 THINGS OFF THE MENU"
         restriction = {true}
@@ -313,7 +328,7 @@ function App () {
       <SmallTransition
         heading="That's Buffer Overflow!"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet tellus cras adipiscing enim eu. Lacinia quis vel eros donec ac odio tempor orci dapibus. Now try it with code!"
-      ></SmallTransition>
+      ></SmallTransition> */}
     </div>
   )
 }
