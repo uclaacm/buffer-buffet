@@ -16,6 +16,15 @@
   height: fit-content;
 }
 
+button:hover{
+  cursor: pointer;
+}
+
+button:focus {
+  border: none;
+  outline: none;
+}
+
 .nextBtn {
   background-color: #D3EDE7;
   color: #034031;
@@ -36,6 +45,10 @@
   background-color: #007054;
   color:#e1fef7;
   font-weight: lighter;
+}
+
+.transitionBtn{
+  display: block;
 }
 
 .squish{
@@ -98,7 +111,10 @@ hr{
 .dropdown{
   color: #FFCFA3;
   font-size: 25px;
+}
 
+.dropdown:hover{
+  cursor: pointer;
 }
 
 p {
@@ -113,64 +129,6 @@ p {
   color: #e1fef7;
 }
 
-.MenuItem {
-  background-color: white;
-  padding: 15px;
-  color: black;
-  margin: 7px;
-  border-radius: 15px;
-}
-
-.Menu {
-  background-color: #e1fef7;
-  padding-top: 1px;
-  padding-bottom: 40px;
-  padding-left: 40px;
-  padding-right: 40px;
-  border-radius: 15px;
-}
-
-.MenuTitle {
-  color: #034031;
-  font-size: 40px;
-  text-align: center;
-}
-
-.OrderTitle {
-  color: #e1fef7;
-  font-size: 40px;
-  text-align: center;
-}
-
-.submitButton {
-  background-color: #d4eac3;
-  color: #034031;
-  font-family: "DM Sans", -apple-system, "Helvetica Neue", sans-serif;
-  font-size: 24px;
-  font-weight: 500;
-  width: 55%;
-  padding: 1vh;
-  border-radius: 15px;
-  border: 2px solid #034031;
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  margin: 0 auto;
-  margin-top: 30px;
-  display: block;
-}
-
-.interactive {
-  display: grid;
-  grid-template-columns: 45% auto;
-  grid-column-gap: 10%;
-}
-
-.error {
-  color: rgb(204, 5, 5);
-  font-family: "DM Sans", -apple-system, "Helvetica Neue", sans-serif;
-  font-size: 20px;
-  margin: 15px 10px -15px 10px;
-  text-align: center;
-}
 
 /* Images */
 #illo {
@@ -207,16 +165,110 @@ p {
 }
 
 #chef {
-  width: 100vw;
+  height: 103vh;
   /* margin-left: -18%;
   margin-bottom: -22.7%;
-  z-index: -1;
   object-fit: contain; */
+  
+  position: absolute;
+  top: -115px;
+  right:-110px;
 }
 
 #chefText {
-  width: 43%;
-  margin-top: -37%;
+  position: absolute;
+  /* z-index: 2; */
+  width: 55%;
+  /* margin-top: -1%; */
+  top: 140px;
+}
+
+.chefHead{
+  position: absolute;
+}
+
+.chefBtn{
+  position: absolute;
+  top: 330px;
+}
+
+/* interactive */
+
+.MenuItem {
+  background-color: white;
+  padding: 12px;
+  color: black;
+  margin: 4px;
+  border-radius: 10px;
+}
+
+.item{
+  font-size: 18px;
+  margin-left: -5px;
+}
+
+.itemsContainer{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 20px;
+}
+
+.Menu {
+  border: solid 1px #e1fef7;
+  padding-top: 1px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 40px;
+}
+
+.Orders{
+  margin-top: -50px;
+}
+
+.interactiveTitle {
+  color: #e1fef7;
+  font-size: 32px;
+  text-align: center;
+}
+
+
+.submitButton {
+  /* background-color: #d4eac3;
+  color: #034031;
+  font-family: "DM Sans", -apple-system, "Helvetica Neue", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  width: 55%;
+  padding: 1vh;
+  border-radius: 15px;
+  border: 2px solid #034031;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  margin: 0 auto; */
+  margin-top: 30px;
+  display: block;
+}
+
+.interactive {
+  display: grid;
+  grid-template-columns: 48% auto;
+  grid-column-gap: 5%;
+}
+
+.error {
+  color: rgb(204, 5, 5);
+  font-family: "DM Sans", -apple-system, "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  margin: 15px 10px -15px 10px;
+  text-align: center;
+}
+
+
+.interactiveHead{
+  font-weight: 500;
+  text-align: center;
+  margin-top: -40px;
+  margin-bottom: 60px;
 }
 
 .OrderItem {
@@ -225,19 +277,19 @@ p {
   font-family: "DM Mono", -apple-system, "Helvetica Neue", sans-serif;
   font-size: 14px;
   width: 100px;
-  height: 150px;
+  height: 130px;
   text-align: center;
-  padding: 10px;
-  margin: 10px;
+  padding: 5px;
+  margin: 8px;
 }
 
 .empty {
   background-color: none;
   border: 2px solid #f3d5fe;
   width: 100px;
-  height: 150px;
-  padding: 8px;
-  margin: 10px;
+  height: 130px;
+  padding: 3px;
+  margin: 8px;
   text-align: center;
 }
 
@@ -249,7 +301,7 @@ p {
 
 .OrderContainer {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
 }
 
 /* checkbox */
@@ -280,9 +332,9 @@ p {
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
-  border: 2px solid #bae7dc;
+  height: 20px;
+  width: 20px;
+  border: 1.5px solid #bae7dc;
 }
 
 /* On mouse-over, add a grey background color */
@@ -304,8 +356,8 @@ p {
 
 /* Style the checkmark/indicator */
 .container .checkmark::after {
-  left: 9px;
-  top: 5px;
+  left: 6px;
+  top: 2px;
   width: 5px;
   height: 10px;
   border: solid white;

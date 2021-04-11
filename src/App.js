@@ -4,28 +4,11 @@ import './App.css'
 import illo from './illo.svg'
 import p1 from './p1 (1).svg'
 import p2 from './p2 (1).svg'
-import chef from './chef(1).svg'
+import chef from './chef.svg'
 
-//to do: style buttons, dropdown
+//to do: style buttons, dropdown, right number of items (and change to one word items), uncheck on submit, LINTING UGHHH
 
 // functions
-function Heading (props) {
-  return (
-    <div>
-      <h3 className = "squish">{props.head1}</h3>
-      <h2 className = "squish2">{props.head2}</h2>
-    </div>
-  )
-}
-
-// function Heading2 (props) {
-//   return (
-//     <div>
-//       <h2>{props.head1}</h2>
-//       <h3>{props.head2}</h3>
-//     </div>
-//   )
-// }
 
 // frames
 function Title () {
@@ -46,6 +29,29 @@ function Title () {
 }
 
 function Introduction () {
+
+  const [dropdown1, setDropdown1] = useState([
+    <div>
+      <hr/>
+
+<p style={{ fontWeight: 'lighter' }}>
+  <span style={{ textDecorationLine: 'underline' }}>Buffers</span> are
+  areas of memory set aside to hold data temporarily as it is being
+  transferred from one region to another. It can hold anything from
+  character strings to arrays of integers. As is in memory systems or
+  programs, the sizes of these buffers are typically well-defined.
+</p>
+<p style={{ fontWeight: 'lighter' }}>
+  For example, a program could contain a 8-byte buffer for a user to enter
+  their password.
+</p>
+<br/>
+<img className="password" src={p1} alt="Buffer Example Password" />
+    </div>
+  ]);
+
+  const [direction1, setDirection1] = useState([]);
+
   return (
     <div className="dark frame long">
       {/* <Heading head1="INTRODUCTION" head2="What is Buffer Overflow?"></Heading> */}
@@ -59,29 +65,13 @@ function Introduction () {
         what buffer overflow is.
       </p>
 
-      {/* <br /> */}
+      <h4> Ok, so what’s a buffer? <span className = "dropdown " onClick = {() => {
+          setDirection1('transform: rotate(-90)')
+          setDropdown1(!{dropdown1})
+      }}>&#9660;</span> </h4> 
+      {dropdown1}
 
-      <h4> Ok, so what’s a buffer? <span className = "dropdown">&#9660;</span> </h4> 
-      <hr/>
-
-      <p style={{ fontWeight: 'lighter' }}>
-        <span style={{ textDecorationLine: 'underline' }}>Buffers</span> are
-        areas of memory set aside to hold data temporarily as it is being
-        transferred from one region to another. It can hold anything from
-        character strings to arrays of integers. As is in memory systems or
-        programs, the sizes of these buffers are typically well-defined.
-      </p>
-      <p style={{ fontWeight: 'lighter' }}>
-        For example, a program could contain a 8-byte buffer for a user to enter
-        their password.
-      </p>
-      <br/>
-      <div>
-        {' '}
-        <img className="password" src={p1} alt="Buffer Example Password" />{' '}
-      </div>
-
-      <h4 className="lightBlue">How do buffers overflow? <span className = "dropdown">&#9660;</span></h4>
+      <h4 className="lightBlue">How do buffers overflow? <span className = "dropdown" style={{ direction1 }}>&#9660;</span></h4>
       <hr/>
       <p style={{ fontWeight: 'lighter' }}>
         <span style={{ textDecorationLine: 'underline' }}>Buffer overflow</span>{' '}
@@ -114,11 +104,11 @@ function Transition () {
         head1="AN ANALOGY"
         head2="Buffer Overflow in the Kitchen"
       ></Heading> */}
-       <div class = "heading">
+       <div class = "heading chefHead">
         <h3 className = "squish">AN ANALOGY</h3>
         <h2 className = "darkGreen">Buffer Overflow in the Kitchen</h2>
       </div>
-      <div className="transitionContainer">
+      <div className = "transitionContainer">
         <img id="chef" src={chef} alt="Illustration of Chef" />
         <p id="chefText">
           To better illustrate the concept of buffer overflow, let’s cook up an
@@ -126,6 +116,7 @@ function Transition () {
           that a waiter comes over, takes your order, writes it down on a
           notepad, then hands over these orders to the chef.
         </p>
+        <button className = "nextBtn chefBtn">Continue</button>
       </div>
     </div>
   )
@@ -136,6 +127,8 @@ function SmallTransition (props) {
     <div className="light frame">
       <h2>{props.heading}</h2>
       <p>{props.text}</p>
+      <br/>
+      <button className = "nextBtn transitionBtn" >{props.btn}</button>
     </div>
   )
 }
@@ -164,7 +157,7 @@ function Interactive (props) {
   function Orders () {
     return (
       <div className="Orders">
-        <h3 className="OrderTitle">ORDERS</h3>
+        <h3 className="interactiveTitle">ORDERS</h3>
         <div className="OrderContainer">
           <div className="empty">
             <p className="question">?</p>
@@ -203,7 +196,7 @@ function Interactive (props) {
       <div className="MenuItem">
         <label className="container">
           {' '}
-          {props.item}
+          <div className = "item">{props.item}</div>
           <input
             type="checkbox"
             checked={menuChecked[props.index]} //  use appropriate value from "menuChecked" array
@@ -286,17 +279,19 @@ function Interactive (props) {
     console.log("menu's restriction: " + props.restriction)
     return (
       <div className="Menu center">
-        <h3 className="MenuTitle">MENU</h3>
-        {menuItems}
+        <h3 className="interactiveTitle">MENU</h3>
+        <div className = "itemsContainer">{menuItems}</div>
+        
         <h4 className = "error">{error}</h4>
-        <button className = "submitButton" onClick={ReadOrder}>Submit</button>
+        <button className = "nextBtn submitButton greenBtn" onClick={ReadOrder}>Order</button>
       </div>
     )
   }
 
   return (
     <div className="dark frame">
-      <Heading2 head1={props.head1} head2={props.head2}></Heading2>
+      {/* <Heading2 head1={props.head1} head2={props.head2}></Heading2> */}
+      <h3 className = "interactiveHead lightBlue">{props.head1} <span style={{ color: '#F3D5FE' }}>{props.head2}</span></h3>
       <div className="interactive">
         <Menu restriction={props.restriction}></Menu>
         <Orders arr={props.arr}></Orders>
@@ -305,30 +300,34 @@ function Interactive (props) {
   )
 }
 
+let secondSubtitle = <span>Pick <span style={{ color: '#FFCFA3' }}>three or more</span> things off the menu</span>
+
 function App () {
   return (
     <div className="App">
       <Title />
       <Introduction />
        <Transition />
-      {/*<Interactive
-        head1="Make some orders"
-        head2="PICK 2 THINGS OFF THE MENU"
+      <Interactive
+        head1="MAKE SOME ORDERS: "
+        head2="Pick two things off the menu"
         restriction = {true}
       ></Interactive>
       <SmallTransition
         heading="Now let's cause a buffer overflow..."
-        text=""
+        text="Et dolore magna aliqua. Sit amet tellus cras adipiscing enim eu. Lacinia quis vel eros donec ac odio tempor orci dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet tellus cras adipiscing enim eu. Lacinia quis vel eros donec ac odio tempor orci dapibus."
+        btn = "Continue"
       ></SmallTransition>
       <Interactive
-        head1="Make a long order"
-        head2="PICK 3 OR MORE THINGS OFF THE MENU"
+        head1="MAKE A LONG ORDER: "
+        head2={secondSubtitle}
         restriction = {false}
       ></Interactive>
       <SmallTransition
         heading="That's Buffer Overflow!"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet tellus cras adipiscing enim eu. Lacinia quis vel eros donec ac odio tempor orci dapibus. Now try it with code!"
-      ></SmallTransition> */}
+        btn = "Next Course"
+     ></SmallTransition>
     </div>
   )
 }
