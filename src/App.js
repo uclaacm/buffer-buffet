@@ -335,13 +335,27 @@ function Interactive (props) {
 function NavBar (props) {
   return (
     <div className="nav">
-      <button onClick= {() => {props.setPage(1)}}>Section 1</button>
-      <button onClick= {() => {props.setPage(2)}}>Section 2</button>
-      <button onClick= {() => {props.setPage(3)}}>Section 3</button>
-      <button onClick= {() => {props.setPage(4)}}>Section 4</button>
-      <button onClick= {() => {props.setPage(5)}}>Section 5</button>
-      <button onClick= {() => {props.setPage(6)}}>Section 6</button>
-      <button onClick= {() => {props.setPage(7)}}>Section 7</button>
+      <button className="navBtn" onClick= {() => {props.setPage(1)}}>
+        <span className="navLabel"> Section 1</span>
+      </button>
+      <button className="navBtn" onClick= {() => {props.setPage(2)}}>
+        <span className="navLabel"> Section 2</span>
+      </button>
+      <button className="navBtn" onClick= {() => {props.setPage(3)}}>
+        <span className="navLabel"> Section 3</span>
+      </button>
+      <button className="navBtn" onClick= {() => {props.setPage(4)}}>
+        <span className="navLabel"> Section 4</span>
+      </button>
+      <button className="navBtn" onClick= {() => {props.setPage(5)}}>
+        <span className="navLabel"> Section 5</span>
+      </button>
+      <button className="navBtn" onClick= {() => {props.setPage(6)}}>
+        <span className="navLabel"> Section 6</span>
+      </button>
+      <button className="navBtn" onClick= {() => {props.setPage(7)}}>
+        <span className="navLabel"> Section 7</span>
+      </button>
     </div>
   )
 }
@@ -355,7 +369,12 @@ function App () {
   return (
     <div className="App">
       {/* nav bar */}
-      <NavBar setPage={setPage}></NavBar>
+      {/* <NavBar setPage={setPage}></NavBar> */}
+
+      {page !== 1 && <button className = "backBtn"
+      onClick= {() => {
+        { setPage(page-1) }}}>&#8592;</button>}
+
       {page === 1 && <Title page={page} setPage={setPage}/>}
       {page === 2 && <Introduction page={page} setPage={setPage}/>}
       {page === 3 && <Transition page={page} setPage={setPage}/>}

@@ -11,10 +11,45 @@
 
 .nav{
   position: fixed;
-  top:30vh;
-  left:0;
+  top:18vh;
+  left:10px;
   display: grid;
 }
+
+/* .nav:hover .navBtn{
+  
+} */
+
+/* .nav .navBtn{
+  background-color:transparent;
+} */
+
+.nav:hover{
+  transition-duration: 1s;
+}
+
+.navBtn{
+  background-color:#007054;
+  font-family: "DM Sans", -apple-system, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  background-color:none;
+  width: 15px;
+  height: 15px;
+  border: none;
+  margin: 20px;
+  border-radius: 50%;
+}
+
+.navBtn:hover{
+  width: fit-content;
+  padding: 15px;
+  line-height: 5px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.navBtn .navLabel { display: none;   margin-top: 25px;}
+.navBtn:hover .navLabel { display: inline; }
 
 .frame {
   padding: 8%;
@@ -71,6 +106,20 @@ button:focus {
   color: #f3d5fe;
   background-color: #034031;
 }
+
+.backBtn {
+  position: fixed;
+  top: 0;
+  left: 10px;
+  background-color: transparent;
+  /* color: #d3ede7; */
+  font-size: 40px;
+  border: none;
+}
+
+/* .backBtn:hover {
+  color: ;
+} */
 
 .greenBtn {
   display: block;
