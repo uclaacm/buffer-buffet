@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState } from 'react'
 // import Scrollspy from 'react-scrollspy'
 import './App.css'
@@ -71,7 +70,7 @@ function Introduction (props) {
     </div>
     )
 
-  const [show1, switch1] = useState([false])
+  const [show1, switch1] = useState([true])
   const [show2, switch2] = useState([false])
 
   console.log('show1: ' + show1)
@@ -92,10 +91,10 @@ function Introduction (props) {
       <h4> Ok, so what’s a buffer? <span className = "dropdown " onClick = {() => {
         switch1(!show1)
       }}>
-        {!show1 ? '▲' : '▼'}
+        {show1 ? '▲' : '▼'}
       </span> </h4>
       <hr/>
-      {show1 ? '' : dropdownDefault1}
+      {!show1 ? '' : dropdownDefault1}
 
       <h4 className="lightBlue">How do buffers overflow? <span className = "dropdown" onClick = {() => {
         switch2(!show2)
@@ -144,7 +143,7 @@ function SmallTransition (props) {
       <p>{props.text}</p>
       <br/>
       <button className = "nextBtn transitionBtn" onClick= {() => {
-        { props.page === 5 ? props.setPage(6) : props.setPage(8) }
+        props.page === 5 ? props.setPage(6) : props.setPage(8)
       }}>{props.btn}</button>
     </div>
   )
@@ -326,40 +325,39 @@ function Interactive (props) {
         <Orders arr={props.arr}></Orders>
       </div>
       <button className = "nextBtn right" onClick= {() => {
-        { props.page === 4 ? props.setPage(5) : props.setPage(7) }
+        props.page === 4 ? props.setPage(5) : props.setPage(7)
       }}>&gt;</button>
     </div>
   )
 }
 
-function NavBar (props) {
-  return (
-    <div className="nav">
-      <button className="navBtn" onClick= {() => {props.setPage(1)}}>
-        <span className="navLabel"> Section 1</span>
-      </button>
-      <button className="navBtn" onClick= {() => {props.setPage(2)}}>
-        <span className="navLabel"> Section 2</span>
-      </button>
-      <button className="navBtn" onClick= {() => {props.setPage(3)}}>
-        <span className="navLabel"> Section 3</span>
-      </button>
-      <button className="navBtn" onClick= {() => {props.setPage(4)}}>
-        <span className="navLabel"> Section 4</span>
-      </button>
-      <button className="navBtn" onClick= {() => {props.setPage(5)}}>
-        <span className="navLabel"> Section 5</span>
-      </button>
-      <button className="navBtn" onClick= {() => {props.setPage(6)}}>
-        <span className="navLabel"> Section 6</span>
-      </button>
-      <button className="navBtn" onClick= {() => {props.setPage(7)}}>
-        <span className="navLabel"> Section 7</span>
-      </button>
-    </div>
-  )
-}
-
+// function NavBar (props) {
+//   return (
+//     <div className="nav">
+//       <button className="navBtn" onClick= {() => { props.setPage(1) }}>
+//         <span className="navLabel"> Section 1</span>
+//       </button>
+//       <button className="navBtn" onClick= {() => { props.setPage(2) }}>
+//         <span className="navLabel"> Section 2</span>
+//       </button>
+//       <button className="navBtn" onClick= {() => { props.setPage(3) }}>
+//         <span className="navLabel"> Section 3</span>
+//       </button>
+//       <button className="navBtn" onClick= {() => { props.setPage(4) }}>
+//         <span className="navLabel"> Section 4</span>
+//       </button>
+//       <button className="navBtn" onClick= {() => { props.setPage(5) }}>
+//         <span className="navLabel"> Section 5</span>
+//       </button>
+//       <button className="navBtn" onClick= {() => { props.setPage(6) }}>
+//         <span className="navLabel"> Section 6</span>
+//       </button>
+//       <button className="navBtn" onClick= {() => { props.setPage(7) }}>
+//         <span className="navLabel"> Section 7</span>
+//       </button>
+//     </div>
+//   )
+// }
 
 const secondSubtitle = <span>Pick <span style={{ color: '#FFCFA3' }}>three or more</span> things off the menu</span>
 
@@ -373,7 +371,8 @@ function App () {
 
       {page !== 1 && <button className = "backBtn"
       onClick= {() => {
-        { setPage(page-1) }}}>&#8592;</button>}
+        setPage(page - 1)
+      }}>&#8592;</button>}
 
       {page === 1 && <Title page={page} setPage={setPage}/>}
       {page === 2 && <Introduction page={page} setPage={setPage}/>}

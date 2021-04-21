@@ -9,30 +9,30 @@
   /* overflow: hidden; */
 }
 
-.nav{
+.nav {
   position: fixed;
-  top:18vh;
-  left:10px;
+  top: 18vh;
+  left: 10px;
   display: grid;
 }
 
 /* .nav:hover .navBtn{
-  
+
 } */
 
 /* .nav .navBtn{
   background-color:transparent;
 } */
 
-.nav:hover{
+.nav:hover {
   transition-duration: 1s;
 }
 
-.navBtn{
-  background-color:#007054;
+.navBtn {
+  /* background-color: #007054; */
   font-family: "DM Sans", -apple-system, "Helvetica Neue", sans-serif;
   font-size: 14px;
-  background-color:none;
+  background-color: none;
   width: 15px;
   height: 15px;
   border: none;
@@ -40,7 +40,7 @@
   border-radius: 50%;
 }
 
-.navBtn:hover{
+.navBtn:hover {
   width: fit-content;
   padding: 15px;
   line-height: 5px;
@@ -48,12 +48,19 @@
   text-align: center;
 }
 
-.navBtn .navLabel { display: none;   margin-top: 25px;}
-.navBtn:hover .navLabel { display: inline; }
+.navBtn .navLabel {
+  display: none;
+  margin-top: 25px;
+}
+
+.navBtn:hover .navLabel {
+  display: inline;
+}
 
 .frame {
   padding: 8%;
   overflow: hidden;
+
   /* height: 34.3vh; */
   height: 65vh;
 }
@@ -112,6 +119,7 @@ button:focus {
   top: 0;
   left: 10px;
   background-color: transparent;
+
   /* color: #d3ede7; */
   font-size: 40px;
   border: none;
