@@ -135,7 +135,7 @@ function Transition (props) {
 function SmallTransition (props) {
   return (
     <div className="light frame">
-      <h2>{props.heading}</h2>
+      <h2 className="darkGreen">{props.heading}</h2>
       <p>{props.text}</p>
       <br/>
       { props.page === 5
