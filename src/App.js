@@ -4,7 +4,7 @@ import './App.css'
 import illo from './illo.svg'
 import p1 from './p1 (1).svg'
 import p2 from './p2 (1).svg'
-import chef from './chef.svg'
+// import chef from './chef.svg'
 
 // to do: style scrollspy, resize, tiny scroll(s)
 
@@ -23,7 +23,7 @@ function Title (props) {
           props.setPage(2)
         }}>Let&apos;s get cooking!</button>
       </div>
-      <img id="illo" src={illo} alt="Illustration of Chef" />
+      <img id="illo" src={illo} alt="Illustration of Platter" />
     </div>
   )
 }
@@ -111,17 +111,13 @@ function Introduction (props) {
 
 function Transition (props) {
   return (
-    <div className="light frame">
-      {/* <Heading
-        head1="AN ANALOGY"
-        head2="Buffer Overflow in the Kitchen"
-      ></Heading> */}
+    <div className="light frame chefFrame">
+       {/* <img id="chef" src={chef} alt="Illustration of Chef" /> */}
        <div className = "heading chefHead">
         <h3 className = "squish">AN ANALOGY</h3>
         <h2 className = "darkGreen">Buffer Overflow in the Kitchen</h2>
       </div>
       <div className = "transitionContainer">
-        <img id="chef" src={chef} alt="Illustration of Chef" />
         <p id="chefText">
           To better illustrate the concept of buffer overflow, let’s cook up an
           analogy. Say you’re eating at a restaurant - what usually happens is
@@ -142,9 +138,13 @@ function SmallTransition (props) {
       <h2>{props.heading}</h2>
       <p>{props.text}</p>
       <br/>
-      <button className = "nextBtn transitionBtn" onClick= {() => {
-        props.page === 5 ? props.setPage(6) : props.setPage(8)
-      }}>{props.btn}</button>
+      { props.page === 5
+        ? <button className = "transitionBtn" onClick= {() => {
+          props.setPage(6)
+        }}>{props.btn}</button>
+        : <a className = "transitionBtn link" href="bufferbuffet-simulator.uclaacm.com">{props.btn}</a>
+      }
+
     </div>
   )
 }
@@ -318,13 +318,13 @@ function Interactive (props) {
   }
 
   return (
-    <div className="dark frame">
+    <div className="dark frame interactiveFrame">
       <h3 className = "interactiveHead lightBlue">{props.head1} <span style={{ color: '#F3D5FE' }}>{props.head2}</span></h3>
       <div className="interactive">
         <Menu restriction={props.restriction}></Menu>
         <Orders arr={props.arr}></Orders>
       </div>
-      <button className = "nextBtn right" onClick= {() => {
+      <button className = "nextBtn interactiveBtn" onClick= {() => {
         props.page === 4 ? props.setPage(5) : props.setPage(7)
       }}>&gt;</button>
     </div>
@@ -369,7 +369,8 @@ function App () {
       {/* nav bar */}
       {/* <NavBar setPage={setPage}></NavBar> */}
 
-      {page !== 1 && <button className = "backBtn"
+      {page !== 1 && <button className =
+      { page % 2 === 1 ? 'backBtn light' : 'backBtn dark'}
       onClick= {() => {
         setPage(page - 1)
       }}>&#8592;</button>}
