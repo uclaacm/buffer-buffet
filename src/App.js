@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import Scrollspy from 'react-scrollspy'
-import './App.css'
+import './App2.css'
 import illo from './illo.svg'
 import p1 from './p1 (1).svg'
 import p2 from './p2 (1).svg'
@@ -11,19 +11,21 @@ import p2 from './p2 (1).svg'
 // frames
 function Title (props) {
   return (
-    <div className='light frame titleContainer'>
-      <div>
-        <h1 id="section-1">Buffer Buffet</h1>
-        <p>
+    <div className='frame titleContainer'>
+      <div className = "title-content">
+        <div className="title greenText">Buffer Buffet</div>
+        <div id="section-1">
           Did you say “table for one”? Thanks for visiting Buffer Buffet! Today,
           we’ll be serving you a full-course meal on the concept of buffer
           overflow, courtesy of your favorite code chefs from Teach LA.
-        </p>
-        <button className = "nextBtn" onClick= {() => {
+        </div>
+        <button className = "lightBtn button" onClick= {() => {
           props.setPage(2)
         }}>Let&apos;s get cooking!</button>
       </div>
-      <img id="illo" src={illo} alt="Illustration of Platter" />
+      <div className="title-illo-container">
+        <img id="illo" src={illo} alt="Illustration of Platter" />
+      </div>
     </div>
   )
 }
@@ -32,17 +34,17 @@ function Introduction (props) {
   const dropdownDefault1 =
     (
   <div>
-<p style={{ fontWeight: 'lighter' }}>
+<div style={{ fontWeight: 'lighter' }}>
   <span style={{ textDecorationLine: 'underline' }}>Buffers</span> are
   areas of memory set aside to hold data temporarily as it is being
   transferred from one region to another. It can hold anything from
   character strings to arrays of integers. As is in memory systems or
   programs, the sizes of these buffers are typically well-defined.
-</p>
-<p style={{ fontWeight: 'lighter' }}>
+</div>
+<div style={{ fontWeight: 'lighter' }}>
   For example, a program could contain a 8-byte buffer for a user to enter
   their password.
-</p>
+</div>
 <br/>
 <img className="password" src={p1} alt="Buffer Example Password" />
     </div>
@@ -50,12 +52,12 @@ function Introduction (props) {
 
   const dropdownDefault2 =
     (<div>
-      <p style={{ fontWeight: 'lighter' }}>
+      <div style={{ fontWeight: 'lighter' }}>
         <span style={{ textDecorationLine: 'underline' }}>Buffer overflow</span>{' '}
         happens when a program attempts to input more data in a buffer than it
         can hold. As a result, the program ends up going past the buffer&#39;s
         boundary and overwrites adjacent memory locations.
-      </p>
+      </div>
 
       <br />
 
@@ -63,10 +65,10 @@ function Introduction (props) {
 
       <br />
 
-      <p style={{ fontWeight: 'lighter' }}>
+      <div style={{ fontWeight: 'lighter' }}>
         Using the example above, the buffer would overflow if a user attempts to
         enter in data that exceeds the 8 bytes alloted.
-      </p>
+      </div>
     </div>
     )
 
@@ -77,34 +79,36 @@ function Introduction (props) {
   console.log('show2: ' + show2)
 
   return (
-    <div className="dark frame long">
+    <div className="frame long">
       <div className = "heading">
-        <h3 className = "squish">INTRODUCTION</h3>
-        <h2 className = "lightBlue">What is buffer overflow?</h2>
+        <div className = "headingOne lightText">INTRODUCTION</div>
+        <div className = "headingTwo lightText">What is buffer overflow?</div>
       </div>
 
-      <p style={{ fontWeight: 'lighter' }}>
+      <div style={{ fontWeight: 'lighter' }}>
         To satisfy your hunger for knowledge, we’ll start with a quick intro of
         what buffer overflow is.
-      </p>
+      </div>
 
-      <h4> Ok, so what’s a buffer? <span className = "dropdown " onClick = {() => {
+      <div className="headingThree"> Ok, so what’s a buffer? <span className = "dropdown " onClick = {() => {
         switch1(!show1)
       }}>
         {show1 ? '▲' : '▼'}
-      </span> </h4>
+      </span> </div>
       <hr/>
       {!show1 ? '' : dropdownDefault1}
 
-      <h4 className="lightBlue">How do buffers overflow? <span className = "dropdown" onClick = {() => {
+      <div className="headingThree">How do buffers overflow? <span className = "dropdown" onClick = {() => {
         switch2(!show2)
-      }}>{!show2 ? '▲' : '▼'}</span></h4>
+      }}>{!show2 ? '▲' : '▼'}</span></div>
       <hr/>
       {show2 ? '' : dropdownDefault2}
       <br/>
-      <button className = "nextBtn greenBtn" onClick= {() => {
-        props.setPage(3)
-      }}>Continue</button>
+      <div className="center">
+        <button className = "button greenBtn" onClick= {() => {
+          props.setPage(3)
+        }}>Continue</button>
+      </div>
     </div>
   )
 }
@@ -112,21 +116,22 @@ function Introduction (props) {
 function Transition (props) {
   return (
     <div className="light frame chefFrame">
-       {/* <img id="chef" src={chef} alt="Illustration of Chef" /> */}
-       <div className = "heading chefHead">
-        <h3 className = "squish">AN ANALOGY</h3>
-        <h2 className = "darkGreen">Buffer Overflow in the Kitchen</h2>
+      <div>
+        <div className = "greenText">
+          <div className = "headingOne fill">AN ANALOGY</div>
+          <div className = "headingTwo fill">Buffer Overflow in the Kitchen</div>
       </div>
       <div className = "transitionContainer">
-        <p id="chefText">
+        <div className="chefText">
           To better illustrate the concept of buffer overflow, let’s cook up an
           analogy. Say you’re eating at a restaurant - what usually happens is
           that a waiter comes over, takes your order, writes it down on a
           notepad, then hands over these orders to the chef.
-        </p>
-        <button className = "nextBtn chefBtn" onClick= {() => {
+        </div>
+        <button className = "button lightBtn" onClick= {() => {
           props.setPage(4)
         }}>Continue</button>
+      </div>
       </div>
     </div>
   )
@@ -134,17 +139,20 @@ function Transition (props) {
 
 function SmallTransition (props) {
   return (
-    <div className="light frame">
-      <h2>{props.heading}</h2>
-      <p>{props.text}</p>
-      <br/>
-      { props.page === 5
-        ? <button className = "transitionBtn" onClick= {() => {
-          props.setPage(6)
-        }}>{props.btn}</button>
-        : <a className = "transitionBtn link" href="bufferbuffet-simulator.uclaacm.com">{props.btn}</a>
-      }
-
+    <div className="light frame smallTransition">
+      <div>
+        <div className="headingTwo greenText">{props.heading}</div>
+        <div>{props.text}</div>
+        <br/>
+        <div className="center">
+          { props.page === 5
+            ? <button className = "button lightBtn" onClick= {() => {
+              props.setPage(6)
+            }}>{props.btn}</button>
+            : <a className = "button lightBtn link" href="https://bufferbuffet-simulator.uclaacm.com/">{props.btn}</a>
+          }
+        </div>
+      </div>
     </div>
   )
 }
@@ -165,9 +173,9 @@ function Interactive (props) {
   function OrderItem (props) {
     return (
       <div className="OrderItem" style = {{ backgroundColor: props.color }}>
-        <p style={{ fontWeight: 600 }}>Order {props.num}</p>
-        <p>{props.items[0]}</p>
-        <p>{props.items[1]}</p>
+        <div style={{ fontWeight: 600 }}>Order {props.num}</div>
+        <div>{props.items[0]}</div>
+        <div>{props.items[1]}</div>
       </div>
     )
   }
@@ -175,10 +183,10 @@ function Interactive (props) {
   function Orders () {
     return (
       <div className="Orders">
-        <h3 className="interactiveTitle">ORDERS</h3>
+        <div className="interactiveTitle">ORDERS</div>
         <div className="OrderContainer">
           <div className="empty">
-            <p className="question">?</p>
+            <div className="question">?</div>
           </div>
           {(orders.slice(0, 7)).map((order, i) => {
             //  like the menuItems, we should use "map" to systematically create the React components
@@ -309,20 +317,24 @@ function Interactive (props) {
     console.log("menu's restriction: " + props.restriction)
     return (
       <div className="Menu center">
-        <h3 className="interactiveTitle">MENU</h3>
+        <div className="interactiveTitle">MENU</div>
         <div className = "itemsContainer">{menuItems}</div>
-        <h4 className = "error">{error}</h4>
-        <button className = "nextBtn submitButton greenBtn" onClick={ReadOrder}>Order</button>
+        <div className = "error">{error}</div>
+        <button className = "button submitButton greenBtn" onClick={ReadOrder}>Order</button>
       </div>
     )
   }
 
   return (
-    <div className="dark frame interactiveFrame">
-      <h3 className = "interactiveHead lightBlue">{props.head1} <span style={{ color: '#F3D5FE' }}>{props.head2}</span></h3>
-      <div className="interactive">
-        <Menu restriction={props.restriction}></Menu>
-        <Orders arr={props.arr}></Orders>
+    <div className="dark frame">
+      <div className="interactiveFrame">
+        <div className="interactiveContainer">
+        <div className = "headingOne lightText interactiveHead">{props.head1} <span style={{ color: '#F3D5FE' }}>{props.head2}</span></div>
+        <div className="interactive">
+          <Menu restriction={props.restriction}></Menu>
+          <Orders arr={props.arr}></Orders>
+        </div>
+        </div>
       </div>
       <button className = "nextBtn interactiveBtn" onClick= {() => {
         props.page === 4 ? props.setPage(5) : props.setPage(7)
@@ -331,44 +343,13 @@ function Interactive (props) {
   )
 }
 
-// function NavBar (props) {
-//   return (
-//     <div className="nav">
-//       <button className="navBtn" onClick= {() => { props.setPage(1) }}>
-//         <span className="navLabel"> Section 1</span>
-//       </button>
-//       <button className="navBtn" onClick= {() => { props.setPage(2) }}>
-//         <span className="navLabel"> Section 2</span>
-//       </button>
-//       <button className="navBtn" onClick= {() => { props.setPage(3) }}>
-//         <span className="navLabel"> Section 3</span>
-//       </button>
-//       <button className="navBtn" onClick= {() => { props.setPage(4) }}>
-//         <span className="navLabel"> Section 4</span>
-//       </button>
-//       <button className="navBtn" onClick= {() => { props.setPage(5) }}>
-//         <span className="navLabel"> Section 5</span>
-//       </button>
-//       <button className="navBtn" onClick= {() => { props.setPage(6) }}>
-//         <span className="navLabel"> Section 6</span>
-//       </button>
-//       <button className="navBtn" onClick= {() => { props.setPage(7) }}>
-//         <span className="navLabel"> Section 7</span>
-//       </button>
-//     </div>
-//   )
-// }
-
 const secondSubtitle = <span>Pick <span style={{ color: '#FFCFA3' }}>three or more</span> things off the menu</span>
 
 function App () {
   const [page, setPage] = useState(1)
   console.log('page ' + page)
   return (
-    <div className="App">
-      {/* nav bar */}
-      {/* <NavBar setPage={setPage}></NavBar> */}
-
+    <div className={page % 2 === 1 ? 'App light' : 'App dark'}>
       {page !== 1 && <button className =
       { page % 2 === 1 ? 'backBtn light' : 'backBtn dark'}
       onClick= {() => {
