@@ -367,7 +367,6 @@ hr {
   }
 }
 
-
 /* CHECKBOXES */
 
 .container {
@@ -438,7 +437,6 @@ hr {
 .container input:checked ~ .checkmark::after {
   display: block;
 }
-
 
 /* ENDING */
 
