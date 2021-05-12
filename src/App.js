@@ -319,7 +319,9 @@ function Interactive (props) {
       <div className="Menu center">
         <div className="interactiveTitle">MENU</div>
         <div className = "itemsContainer">{menuItems}</div>
-        <div className = "error">{error}</div>
+        <div className = "error"
+          style= {error ? {} : { height: '0px' }}
+        >{error}</div>
         <button className = "button submitButton greenBtn" onClick={ReadOrder}>Order</button>
       </div>
     )
@@ -367,7 +369,7 @@ function App () {
       ></Interactive>}
       {page === 5 && <SmallTransition
         heading="Now let's cause a buffer overflow..."
-        text="Et dolore magna aliqua. Sit amet tellus cras adipiscing enim eu. Lacinia quis vel eros donec ac odio tempor orci dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet tellus cras adipiscing enim eu. Lacinia quis vel eros donec ac odio tempor orci dapibus."
+        text="In the previous slide, customers had the ability to pick two things off the menu per order as there is only room for two items on each page of the notepad. Therefore, there’s no confusion over which items belong under a specific order number. What happens if a customer tries to order more than two items?"
         btn = "Continue"
         page={page} setPage={setPage}
       ></SmallTransition>}
@@ -379,7 +381,7 @@ function App () {
       ></Interactive>}
       {page === 7 && <SmallTransition
         heading="That's Buffer Overflow!"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet tellus cras adipiscing enim eu. Lacinia quis vel eros donec ac odio tempor orci dapibus. Now try it with code!"
+        text="When a customer tries to order more than two items, the waiter must record the additional items on the next page. However, by the restaurant’s standards, each page of the notepad has an order number. As a result, when the waiter tries to check the next order, the additional items are specified rather than the new order putting the restaurant in a bit of a pickle. Now that we’ve gone through the analogy for buffer overflow, let’s try it out with code!"
         btn = "Next Course"
         page={page} setPage={setPage}
      ></SmallTransition>}
